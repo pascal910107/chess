@@ -26,7 +26,11 @@ export default function BasicsPage() {
           <div>
             <div className="relative group w-full max-w-[360px]">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg blur opacity-50"></div>
-              <div className="relative rounded-lg overflow-hidden shadow-lg border border-border">
+              <div
+                className="relative rounded-lg overflow-hidden shadow-lg border border-border select-none"
+                style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+                onContextMenu={(e) => e.preventDefault()}
+              >
                 <Chessboard
                   options={{
                     position: basicsContent.initialPosition,

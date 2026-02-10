@@ -120,7 +120,11 @@ export default function GameBoard({
   return (
     <div className="w-full max-w-[600px] aspect-square relative group">
       <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
-      <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-border">
+      <div
+        className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-border select-none"
+        style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+        onContextMenu={(e) => e.preventDefault()}
+      >
         <Chessboard
           options={{
             position: game.fen(),

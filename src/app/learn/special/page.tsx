@@ -69,7 +69,11 @@ export default function SpecialRulesPage() {
               {/* 棋盤展示 */}
               <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <div className="relative transform group-hover:scale-[1.02] transition-transform duration-300">
-                  <div className="w-full max-w-[320px] mx-auto rounded-xl overflow-hidden shadow-xl border-2 border-border">
+                  <div
+                    className="w-full max-w-[320px] mx-auto rounded-xl overflow-hidden shadow-xl border-2 border-border select-none"
+                    style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+                    onContextMenu={(e) => e.preventDefault()}
+                  >
                     <Chessboard
                       options={{
                         position: rule.demoPosition,

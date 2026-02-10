@@ -107,6 +107,7 @@ export default function InteractiveDemo({
   // Touch events
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     if (e.touches.length === 1) {
+      e.preventDefault(); // 阻止長按選單
       handlePressStart(e.touches[0].clientX, e.touches[0].clientY);
     }
   }, [handlePressStart]);
@@ -228,12 +229,14 @@ export default function InteractiveDemo({
         <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
         <div
           ref={boardRef}
-          className="relative rounded-lg overflow-hidden shadow-lg border border-border"
+          className="relative rounded-lg overflow-hidden shadow-lg border border-border select-none"
+          style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
+          onContextMenu={(e) => e.preventDefault()}
           role="application"
           aria-label="互動式棋盤"
         >
