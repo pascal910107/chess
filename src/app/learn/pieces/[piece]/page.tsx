@@ -35,15 +35,15 @@ export default function PiecePage({ params }: PageProps) {
         </Link>
 
         {/* 標題區域 */}
-        <div className="flex items-center gap-6 mb-12 animate-fade-in">
-          <div className="w-20 h-20 flex items-center justify-center text-6xl bg-gradient-to-br from-primary to-accent rounded-2xl shadow-xl border border-border text-primary-foreground">
-            {piece.symbol}
+        <div className="flex items-center gap-4 md:gap-6 mb-12 animate-fade-in">
+          <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center text-4xl md:text-5xl bg-gradient-to-br from-primary to-accent rounded-xl shadow-lg border border-border text-primary-foreground shrink-0 leading-none">
+            <span className="-translate-y-0.5">{piece.symbol}</span>
           </div>
-          <div>
-            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-foreground mb-2">
+          <div className="min-w-0">
+            <h1 className="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-foreground mb-1">
               {piece.name}
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">{piece.description}</p>
+            <p className="text-muted-foreground text-sm md:text-lg">{piece.description}</p>
           </div>
         </div>
 
