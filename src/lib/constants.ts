@@ -18,14 +18,14 @@ export const PIECE_SLUGS: Record<string, string> = {
   pawn: 'p',
 };
 
-// 棋盤顏色 - Wooden Theme
+// 棋盤顏色 - Classic Light Wood Theme
 export const BOARD_COLORS = {
-  light: '#f0d9b5', // Light maple wood
-  dark: '#b58863',  // Dark oak wood
-  highlight: 'rgba(201, 166, 107, 0.6)', // Warm gold
-  lastMove: 'rgba(201, 166, 107, 0.4)', // Warm gold
-  legalMove: 'radial-gradient(circle, rgba(0,0,0,.2) 25%, transparent 25%)',
-  legalCapture: 'radial-gradient(circle, transparent 0%, transparent 79%, rgba(139, 32, 32, 0.5) 80%)', // Red tint for capture
+  light: '#f0d9b5', // Classic Light Wood (Maple)
+  dark: '#b58863',  // Classic Dark Wood (Oak)
+  highlight: 'rgba(20, 184, 166, 0.5)', // Teal - 明顯的青綠色
+  lastMove: 'rgba(253, 224, 71, 0.5)', // Yellow - 上一步黃色標記
+  legalMove: 'radial-gradient(circle, rgba(20, 184, 166, 0.6) 25%, transparent 25%)', // Teal dots
+  legalCapture: 'radial-gradient(circle, transparent 0%, transparent 60%, rgba(239, 68, 68, 0.7) 61%)', // Red ring
 };
 
 // 導航連結

@@ -41,12 +41,12 @@ export default function GameBoard({
     const styles: Record<string, React.CSSProperties> = {};
 
     if (lastMove) {
-      styles[lastMove.from] = { backgroundColor: BOARD_COLORS.lastMove };
-      styles[lastMove.to] = { backgroundColor: BOARD_COLORS.lastMove };
+      styles[lastMove.from] = { background: BOARD_COLORS.lastMove };
+      styles[lastMove.to] = { background: BOARD_COLORS.lastMove };
     }
 
     if (selectedSquare) {
-      styles[selectedSquare] = { backgroundColor: BOARD_COLORS.highlight };
+      styles[selectedSquare] = { background: BOARD_COLORS.highlight };
     }
 
     legalMoves.forEach(square => {
@@ -119,8 +119,8 @@ export default function GameBoard({
 
   return (
     <div className="w-full max-w-[600px] aspect-square relative group">
-      <div className="absolute -inset-1 bg-gradient-to-r from-wood-400 to-wood-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-      <div className="relative rounded-lg overflow-hidden shadow-2xl border-4 border-wood-700 bg-wood-800">
+      <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+      <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-border">
         <Chessboard
           options={{
             position: game.fen(),

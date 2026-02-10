@@ -46,12 +46,11 @@ export default function PlayPage() {
   }, []);
 
   return (
-    <div className="min-h-screen pt-20 pb-8 px-4 bg-wood-950 text-wood-100">
+    <div className="min-h-screen pt-20 pb-8 px-4 bg-background text-foreground">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-wood-900 to-transparent opacity-80" />
-        <div className="absolute -left-20 top-40 w-72 h-72 bg-wood-500/10 rounded-full blur-[100px]" />
-        <div className="absolute -right-20 bottom-20 w-80 h-80 bg-wood-700/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-primary/5 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-accent/5 to-transparent" />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -63,13 +62,13 @@ export default function PlayPage() {
             <div className={`
               flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-md transition-all duration-300
               ${status.status === 'checkmate' || status.message.includes('將軍')
-                ? 'bg-red-500/10 border-red-500/30 text-red-200'
-                : 'bg-wood-800/50 border-wood-700/50 text-wood-300'}
+                ? 'bg-destructive/10 border-destructive/30 text-destructive'
+                : 'bg-card/50 border-border/50 text-muted-foreground'}
             `}>
               {status.status === 'checkmate' ? (
-                <AlertTriangle className="w-4 h-4" />
+                <AlertTriangle className="w-4 h-4" aria-hidden="true" />
               ) : (
-                <Info className="w-4 h-4" />
+                <Info className="w-4 h-4" aria-hidden="true" />
               )}
               <span className="text-sm font-medium">{status.message}</span>
             </div>
@@ -90,11 +89,11 @@ export default function PlayPage() {
           <div className="flex flex-col gap-6 h-full min-h-[500px]">
             {/* Game Info Panel */}
             <div className="flex flex-col h-[500px] gap-4">
-              <div className="flex-1 bg-wood-900/50 backdrop-blur-sm border border-wood-700 rounded-xl overflow-hidden shadow-xl">
+              <div className="flex-1 bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
                 <MoveHistory history={history} />
               </div>
 
-              <div className="bg-wood-900/50 backdrop-blur-sm border border-wood-700 rounded-xl p-4 shadow-xl">
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
                 <GameControls
                   onUndo={handleUndo}
                   onReset={handleReset}

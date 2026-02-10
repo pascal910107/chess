@@ -129,7 +129,7 @@ export default function InteractiveDemo({
 
     highlightSquares.forEach(square => {
       styles[square] = {
-        backgroundColor: 'rgba(201, 166, 107, 0.5)', // Wood gold
+        background: BOARD_COLORS.highlight,
         boxShadow: 'inset 0 0 10px rgba(0,0,0,0.2)',
       };
     });
@@ -140,8 +140,8 @@ export default function InteractiveDemo({
       styles[square] = {
         ...styles[square],
         background: hasPiece
-          ? 'radial-gradient(circle, transparent 60%, rgba(34, 197, 94, 0.6) 60%)' // Green ring for captures
-          : 'radial-gradient(circle, rgba(34, 197, 94, 0.5) 25%, transparent 25%)', // Green dot for moves
+          ? 'radial-gradient(circle, transparent 60%, rgba(20, 184, 166, 0.7) 61%)'
+          : 'radial-gradient(circle, rgba(20, 184, 166, 0.6) 25%, transparent 25%)',
       };
     });
 
@@ -149,14 +149,14 @@ export default function InteractiveDemo({
     if (hintSource) {
       styles[hintSource] = {
         ...styles[hintSource],
-        backgroundColor: 'rgba(34, 197, 94, 0.4)', // Green background
+        background: 'rgba(20, 184, 166, 0.5)',
       };
     }
 
     if (selectedSquare) {
       styles[selectedSquare] = {
         ...styles[selectedSquare],
-        backgroundColor: 'rgba(201, 166, 107, 0.7)',
+        background: BOARD_COLORS.highlight,
       };
     }
 
@@ -225,15 +225,17 @@ export default function InteractiveDemo({
   return (
     <div className="space-y-4">
       <div className="relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-wood-400/20 to-wood-600/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
         <div
           ref={boardRef}
-          className="relative rounded-lg overflow-hidden shadow-lg border border-wood-700 bg-wood-800"
+          className="relative rounded-lg overflow-hidden shadow-lg border border-border"
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
+          role="application"
+          aria-label="互動式棋盤"
         >
           <Chessboard
             options={{
@@ -252,16 +254,19 @@ export default function InteractiveDemo({
 
       <div className="flex items-center justify-between min-h-[24px]">
         {description && !feedback && (
-          <p className="text-sm text-wood-300 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-wood-400"></span>
+          <p className="text-sm text-muted-foreground flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
             {description}
           </p>
         )}
 
         {feedback && (
-          <div className={`flex items-center gap-2 text-sm font-medium animate-fade-in ${feedback.type === 'success' ? 'text-green-400' : 'text-red-400'
-            }`}>
-            {feedback.type === 'success' ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+          <div
+            className={`flex items-center gap-2 text-sm font-medium animate-fade-in ${feedback.type === 'success' ? 'text-green-400' : 'text-red-400'}`}
+            role="alert"
+            aria-live="polite"
+          >
+            {feedback.type === 'success' ? <CheckCircle className="w-4 h-4" aria-hidden="true" /> : <XCircle className="w-4 h-4" aria-hidden="true" />}
             {feedback.message}
           </div>
         )}

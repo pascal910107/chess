@@ -1,41 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  /* Wooden Theme - Warm Browns */
-  --background: #2c1810;
-  /* Dark walnut */
-  --foreground: #fef3e2;
-  /* Warm cream */
+  /* Premium Light Wood Theme - Cream/Maple */
+  --background: #fbf7f1;
+  /* Warm Cream / Off-white */
+  --foreground: #432818;
+  /* Dark Walnut Brown */
 
-  --card: #3d241a;
-  /* Medium walnut */
-  --card-foreground: #fef3e2;
-  /* Warm cream */
+  --card: #fffbf0;
+  /* Lighter Cream */
+  --card-foreground: #432818;
 
-  --popover: #2c1810;
-  --popover-foreground: #fef3e2;
+  --popover: #fbf7f1;
+  --popover-foreground: #432818;
 
-  --primary: #c9a66b;
-  /* Warm gold/brass */
-  --primary-foreground: #1a0f0a;
+  --primary: #b08d55;
+  /* Antique Gold / Bronze */
+  --primary-foreground: #fffbf0;
 
-  --secondary: #4a3228;
-  /* Warm brown */
-  --secondary-foreground: #fef3e2;
+  --secondary: #eaddcf;
+  /* Light Latte */
+  --secondary-foreground: #432818;
 
-  --muted: #4a3228;
-  --muted-foreground: #d4b896;
-  /* Light tan */
+  --muted: #eaddcf;
+  --muted-foreground: #856d58;
+  /* Medium Brown */
 
-  --accent: #5c3d2e;
-  --accent-foreground: #c9a66b;
+  --accent: #d4c5b0;
+  /* Sand */
+  --accent-foreground: #432818;
 
-  --destructive: #8b2020;
-  --destructive-foreground: #fef3e2;
+  --destructive: #9f1239;
+  /* Deep Red */
+  --destructive-foreground: #fffbf0;
 
-  --border: #5c3d2e;
-  --input: #4a3228;
-  --ring: #c9a66b;
+  --border: #e6dace;
+  /* Light Tan */
+  --input: #fffbf0;
+  --ring: #b08d55;
 
   --radius: 0.5rem;
 }
@@ -62,18 +64,22 @@
   --color-ring: var(--ring);
   --radius-radius: var(--radius);
 
-  /* Wood theme color palette */
-  --color-wood-50: #fef3e2;
-  --color-wood-100: #fce7c5;
-  --color-wood-200: #f5d4a3;
-  --color-wood-300: #d4b896;
-  --color-wood-400: #c9a66b;
-  --color-wood-500: #a67c52;
-  --color-wood-600: #8b5a3c;
-  --color-wood-700: #5c3d2e;
-  --color-wood-800: #4a3228;
-  --color-wood-900: #3d241a;
-  --color-wood-950: #2c1810;
+  /* Light Wood Scale (Reverse of Dark) */
+  --color-wood-50: #6f4e37;
+  /* Darkest for text/contrast (Coffee) */
+  --color-wood-100: #5d4037;
+  --color-wood-200: #795548;
+  --color-wood-300: #8d6e63;
+  --color-wood-400: #a1887f;
+  /* Medium Brown */
+  --color-wood-500: #bcaaa4;
+  --color-wood-600: #d7ccc8;
+  --color-wood-700: #eaddcf;
+  --color-wood-800: #f5ebe0;
+  --color-wood-900: #fbf7f1;
+  /* Current Background (Cream) */
+  --color-wood-950: #ffffff;
+  /* Pure White */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -112,15 +118,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphism Utilities */
+/* Glassmorphism Utilities - Light Theme */
 .glass {
-  background: rgba(61, 36, 26, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 166, 107, 0.15);
+  background: rgba(255, 251, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(176, 141, 85, 0.2);
 }
 
 .glass-hover:hover {
-  background: rgba(74, 50, 40, 0.9);
-  border-color: rgba(201, 166, 107, 0.4);
+  background: rgba(255, 251, 240, 0.95);
+  border-color: rgba(176, 141, 85, 0.4);
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -11,14 +11,13 @@ export default function PieceInfo({ slug, name, symbol, description }: PieceInfo
   return (
     <Link
       href={`/learn/pieces/${slug}`}
-      className="block p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm
-                 hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700"
+      className="block p-6 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow border border-border hover:border-primary/50"
     >
       <div className="flex items-center gap-4">
         <span className="text-5xl">{symbol}</span>
         <div>
-          <h3 className="text-xl font-semibold">{name}</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+          <h3 className="text-xl font-semibold text-foreground">{name}</h3>
+          <p className="text-muted-foreground text-sm mt-1">
             {description}
           </p>
         </div>

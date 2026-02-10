@@ -43,12 +43,13 @@ function ControlButton({ onClick, disabled, icon, label }: { onClick: () => void
       onClick={onClick}
       disabled={disabled}
       className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200
-        bg-wood-800 hover:bg-wood-700 text-wood-100 hover:text-white border border-wood-700
-        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-wood-800 disabled:hover:text-wood-100
-        active:scale-95 shadow-sm"
+        bg-card hover:bg-muted text-foreground border border-border
+        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-card
+        active:scale-95 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       title={label}
+      aria-label={label}
     >
-      {icon}
+      <span aria-hidden="true">{icon}</span>
       <span>{label}</span>
     </button>
   );
