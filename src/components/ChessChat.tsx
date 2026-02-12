@@ -188,7 +188,7 @@ export default function ChessChat({ fen, moveHistory, turn }: ChessChatProps) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="輸入問題..."
             disabled={isLoading}
-            className="flex-1 px-3 py-2 text-sm bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50"
+            className="flex-1 px-3 py-2 text-base bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50"
           />
           <button
             type="submit"
