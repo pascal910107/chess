@@ -5,6 +5,7 @@ import { Chess, Move } from 'chess.js';
 import GameBoard from '@/components/GameBoard';
 import MoveHistory from '@/components/MoveHistory';
 import GameControls from '@/components/GameControls';
+import ChessChat from '@/components/ChessChat';
 import { getGameStatus } from '@/lib/chess-utils';
 import { Info, AlertTriangle } from 'lucide-react';
 
@@ -14,9 +15,11 @@ export default function PlayPage() {
   const [status, setStatus] = useState(() => getGameStatus(game));
   const [boardOrientation, setBoardOrientation] = useState<'white' | 'black'>('white');
   const [, setUpdateKey] = useState(0);
+  const [moveHistorySan, setMoveHistorySan] = useState('');
 
   const handleMoveChange = useCallback((newHistory: Move[]) => {
     setHistory([...newHistory]);
+    setMoveHistorySan(newHistory.map(m => m.san).join(' '));
   }, []);
 
   const handleStatusChange = useCallback((newStatus: ReturnType<typeof getGameStatus>) => {
@@ -25,7 +28,9 @@ export default function PlayPage() {
 
   const handleUndo = useCallback(() => {
     game.undo();
-    setHistory([...game.history({ verbose: true })]);
+    const newHistory = game.history({ verbose: true });
+    setHistory([...newHistory]);
+    setMoveHistorySan(newHistory.map(m => m.san).join(' '));
     setStatus(getGameStatus(game));
     setUpdateKey(k => k + 1);
   }, [game]);
@@ -33,6 +38,7 @@ export default function PlayPage() {
   const handleReset = useCallback(() => {
     game.reset();
     setHistory([]);
+    setMoveHistorySan('');
     setStatus(getGameStatus(game));
     setUpdateKey(k => k + 1);
   }, [game]);
@@ -86,21 +92,29 @@ export default function PlayPage() {
           </div>
 
           {/* Sidebar */}
-          <div className="flex flex-col gap-6 h-full min-h-[500px]">
-            {/* Game Info Panel */}
-            <div className="flex flex-col h-[500px] gap-4">
-              <div className="flex-1 bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
-                <MoveHistory history={history} />
-              </div>
+          <div className="flex flex-col gap-4 h-full">
+            {/* Move History */}
+            <div className="h-[240px] bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
+              <MoveHistory history={history} />
+            </div>
 
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
-                <GameControls
-                  onUndo={handleUndo}
-                  onReset={handleReset}
-                  onFlipBoard={handleFlipBoard}
-                  canUndo={history.length > 0}
-                />
-              </div>
+            {/* Game Controls */}
+            <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
+              <GameControls
+                onUndo={handleUndo}
+                onReset={handleReset}
+                onFlipBoard={handleFlipBoard}
+                canUndo={history.length > 0}
+              />
+            </div>
+
+            {/* AI Chat */}
+            <div className="h-[500px] bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
+              <ChessChat
+                fen={game.fen()}
+                moveHistory={moveHistorySan}
+                turn={game.turn()}
+              />
             </div>
           </div>
 

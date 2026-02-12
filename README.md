@@ -1,5 +1,31 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## AI 棋局問答助手
+
+在對弈頁面 `/play` 內建 AI 助手，可以即時詢問關於當前棋局的問題。
+
+### 設定 Gemini API Key
+
+1. 前往 [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. 登入 Google 帳號
+3. 點擊「Create API Key」建立新的 API Key
+4. 複製 API Key
+5. 在專案根目錄建立 `.env.local` 檔案：
+   ```
+   GEMINI_API_KEY=你的_API_Key
+   GEMINI_MODEL=gemini-2.5-flash  # 可選，預設 gemini-2.5-flash
+   ```
+
+### 功能說明
+
+- **快速提問按鈕**：一鍵詢問常見問題
+  - 目前誰佔優勢？
+  - 我應該怎麼走？
+  - 對手在威脅什麼？
+  - 解釋最後一步棋
+- **自由提問**：輸入任何關於棋局的問題
+- **即時串流回應**：AI 回覆會即時顯示
+
 ## Getting Started
 
 First, run the development server:
