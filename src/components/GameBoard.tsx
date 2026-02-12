@@ -205,6 +205,8 @@ export default function GameBoard({
     const result = handleMove(sourceSquare as Square, targetSquare as Square);
     setSelectedSquare(null);
     setLegalMoves([]);
+    setHintSquares([]);
+    setHintSource(null);
     return result;
   }, [handleMove]);
 
@@ -214,6 +216,8 @@ export default function GameBoard({
       handleMove(selectedSquare, sq);
       setSelectedSquare(null);
       setLegalMoves([]);
+      setHintSquares([]);
+      setHintSource(null);
       return;
     }
 

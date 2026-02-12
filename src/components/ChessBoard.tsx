@@ -226,6 +226,8 @@ export default function ChessBoard({
       if (move) {
         setSelectedSquare(null);
         setLegalMoves([]);
+        setHintSquares([]);
+        setHintSource(null);
         return;
       }
     }
@@ -250,6 +252,8 @@ export default function ChessBoard({
     const move = makeMove(sourceSquare as Square, targetSquare as Square);
     setSelectedSquare(null);
     setLegalMoves([]);
+    setHintSquares([]);
+    setHintSource(null);
     return move !== null;
   }, [allowMoves, makeMove]);
 
